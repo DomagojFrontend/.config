@@ -33,3 +33,6 @@ vim.keymap.set("n", "<leader>to", ":tabnew<CR>")
 vim.keymap.set("n", "<leader>tx", ":tabclose<CR>")
 vim.keymap.set("n", "<leader>tn", ":tabn<CR>")
 vim.keymap.set("n", "<leader>tp", ":tabp<CR>")
+
+--formatting with eslint
+vim.keymap.set("n", "<leader>f", ":!eslint_d % --fix<CR>")

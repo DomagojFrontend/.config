@@ -12,19 +12,31 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	"wbthomason/packer.nvim",
+	-- theme
 	{ "svrana/neosolarized.nvim", dependencies = { "tjdevries/colorbuddy.nvim" } },
 	"nvim-tree/nvim-tree.lua",
 	"nvim-tree/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
+
+	-- syntax highlighting
 	"nvim-treesitter/nvim-treesitter",
+
+	-- find files
 	{ "nvim-telescope/telescope.nvim", tag = "0.1.0", dependencies = { "nvim-lua/plenary.nvim" } },
 	"nvim-telescope/telescope-file-browser.nvim",
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+
+	-- mason
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
+
+	-- git interigation
+	"lewis6991/gitsigns.nvim",
+
+	-- LSP config
 	"neovim/nvim-lspconfig",
 
+	-- code completition
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-nvim-lsp",
 	"l3mon4d3/luasnip",
@@ -34,7 +46,33 @@ local plugins = {
 	-- formatting & linting
 	"jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
 	"jayp0521/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
-	"christoomey/vim-tmux-navigator",
+	"chris Arbeitszeitoomey/vim-tmux-navigator",
+
+	-- codeium
+	"Exafunction/codeium.vim",
+
+	-- mini.nvim
+	{
+		"echasnovski/mini.comment",
+		version = false,
+		config = function()
+			require("mini.comment").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.pairs",
+		version = false,
+		config = function()
+			require("mini.pairs").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.move",
+		version = false,
+		config = function()
+			require("mini.move").setup()
+		end,
+	},
 }
 
 local opts = {}
