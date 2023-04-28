@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -17,6 +18,8 @@ local plugins = {
 	"nvim-tree/nvim-tree.lua",
 	"nvim-tree/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
+	"christoomey/vim-tmux-navigator",
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 
 	-- syntax highlighting
 	"nvim-treesitter/nvim-treesitter",
@@ -27,6 +30,7 @@ local plugins = {
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
 	-- mason
+	"folke/neoconf.nvim",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 
@@ -37,16 +41,39 @@ local plugins = {
 	"neovim/nvim-lspconfig",
 
 	-- code completition
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-nvim-lsp",
-	"l3mon4d3/luasnip",
-	"saadparwaiz1/cmp_luasnip",
-	"rafamadriz/friendly-snippets",
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lua",
+			-- Snippet Engine
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/vim-vsnip",
+			"onsails/lspkind.nvim",
+		},
+	},
+	-- "hrsh7th/cmp-buffer",
+	-- "hrsh7th/cmp-path",
+	-- "onsails/lspkind.nvim",
+	"glepnir/lspsaga.nvim",
+	-- "hrsh7th/cmp-nvim-lsp",
+	-- "hrsh7th/cmp-vsnip",
+	-- "hrsh7th/vim-vsnip",
+
+	-- {
+	-- 	"L3MON4D3/LuaSnip",
+	-- 	lazy = false,
+	-- 	dependencies = {
+	-- 		"rafamadriz/friendly-snippets",
+	-- 		"saadparwaiz1/cmp_luasnip",
+	-- 	},
+	-- },
 
 	-- formatting & linting
 	"jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
 	"jayp0521/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
-	"chris Arbeitszeitoomey/vim-tmux-navigator",
 
 	-- codeium
 	"Exafunction/codeium.vim",

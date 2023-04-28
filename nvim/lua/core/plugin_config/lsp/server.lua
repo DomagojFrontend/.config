@@ -64,13 +64,17 @@ lspconfig.html.setup({
 	on_attach = on_attach,
 })
 
-
 -- configure typescript server with plugin
 typescript.setup({
 	disable_commands = false, -- prevent the plugin from creating Vim commands
 	debug = false, -- enable debug logging for commands
 	go_to_source_definition = {
 		fallback = true, -- fall back to standard LSP definition on failure
+	},
+	settings = {
+		completions = {
+			completeFunctionCalls = true,
+		},
 	},
 	server = {
 		capabilities = capabilities,
@@ -89,13 +93,21 @@ lspconfig.emmet_ls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+	init_options = {
+		html = {
+			options = {
+				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+				["bem.enabled"] = true,
+			},
+		},
+	},
 })
 
 -- configure vue server
 lspconfig.volar.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = { "vue" },
+	filetypes = { "vue", "typescript", "javascript" },
 })
 
 -- configure docker server
